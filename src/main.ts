@@ -27,7 +27,7 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
   app.enableCors();
 
-  const serverPort = configService.get<string>("SERVER_PORT");
+  const serverPort = configService.get<number>("SERVER_PORT") || 4000;
   await app.listen(serverPort);
 }
 bootstrap();
