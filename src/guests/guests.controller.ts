@@ -36,7 +36,7 @@ export class GuestsController {
   ) {
     try {
       const { page, pageSize, search } = query;
-      return await this.guestService.getGuests(page, pageSize, search);
+      return "await this.guestService.getGuests(page, pageSize, search)";
     } catch (error) {}
   }
 
