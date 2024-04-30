@@ -26,11 +26,14 @@ export class GuestsService {
     pageSize: number = 20,
     searchQuery?: string
   ): Promise<{ guests: Guests[]; total: number }> {
+    console.log("in getGuests....29");
     const offset = (page - 1) * pageSize;
     let whereCondition: any = {};
+    console.log("in getGuests....32");
     if (searchQuery) {
       whereCondition = { name: Like(`%${searchQuery.toUpperCase().trim()}%`) };
     }
+    console.log("in getGuests....36");
     const [guests, total] = await this.guestsRepository.findAndCount({
       where: whereCondition,
       skip: offset,
@@ -39,6 +42,7 @@ export class GuestsService {
         name: "ASC", // or 'DESC' for descending order
       },
     });
+    console.log("in getGuests....45");
     return { guests, total };
   }
 
