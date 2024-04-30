@@ -33,7 +33,7 @@ export class GuestsService {
     if (searchQuery) {
       whereCondition = { name: Like(`%${searchQuery.toUpperCase().trim()}%`) };
     }
-    console.log("in getGuests....36");
+    console.log("in getGuests....366");
     // const [guests, total] = await this.guestsRepository.findAndCount({
     //   where: whereCondition,
     //   skip: offset,
