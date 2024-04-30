@@ -25,7 +25,7 @@ export class GuestsService {
     page: number = 1,
     pageSize: number = 20,
     searchQuery?: string
-  ): Promise<{ guests: Guests[]; total: number }> {
+  ): Promise<any> {
     console.log("in getGuests....29");
     const offset = (page - 1) * pageSize;
     let whereCondition: any = {};
@@ -34,15 +34,36 @@ export class GuestsService {
       whereCondition = { name: Like(`%${searchQuery.toUpperCase().trim()}%`) };
     }
     console.log("in getGuests....36");
-    const [guests, total] = await this.guestsRepository.findAndCount({
-      where: whereCondition,
-      skip: offset,
-      take: pageSize,
-      order: {
-        name: "ASC", // or 'DESC' for descending order
-      },
-    });
+    // const [guests, total] = await this.guestsRepository.findAndCount({
+    //   where: whereCondition,
+    //   skip: offset,
+    //   take: pageSize,
+    //   order: {
+    //     name: "ASC", // or 'DESC' for descending order
+    //   },
+    // });
+    const sqlQuery = `
+  SELECT * FROM guests
+  WHERE ${whereCondition}
+  ORDER BY name ASC
+  LIMIT ${pageSize} OFFSET ${offset};
+`;
+
+    // Execute the SQL query
+    const { rows: guests } = await this.guestsRepository.query(sqlQuery);
+
+    // Count the total number of records
+    const countQuery = `
+  SELECT COUNT(*) FROM guests
+  WHERE ${whereCondition};
+`;
+
+    const {
+      rows: [{ count: total }],
+    } = await this.guestsRepository.query(countQuery);
+
     console.log("in getGuests....45");
+    return [guests, parseInt(total)];
     return { guests, total };
   }
 
