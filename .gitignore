@@ -1,6 +1,7 @@
 dist/
 node_modules/
 build/
+yarn.lock
 
 # Logs
 logs
@@ -13,3 +14,5 @@ lerna-debug.log*
 
 # OS
 .DS_Store
+
+functions

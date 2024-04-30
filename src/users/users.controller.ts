@@ -8,17 +8,17 @@ import {
   Post,
   Req,
   UseGuards,
-} from '@nestjs/common';
-import { UsersService } from './users.service';
-import { CreateUserDto } from './dto/user.dto';
-import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
-import { JwtGuard } from 'src/auth/guards/jwt.guard';
-import { Request } from 'express';
-import { Public } from 'src/auth/roles_permissions/decorators/public.decorator';
+} from "@nestjs/common";
+import { UsersService } from "./users.service";
+import { CreateUserDto } from "./dto/user.dto";
+import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
+import { JwtGuard } from "src/auth/guards/jwt.guard";
+import { Request } from "express";
+import { Public } from "src/auth/roles_permissions/decorators/public.decorator";
 
 @ApiBearerAuth()
-@ApiTags('Users')
-@Controller('users')
+@ApiTags("Users")
+@Controller("users")
 export class UsersController {
   constructor(private userService: UsersService) {}
 
@@ -37,8 +37,8 @@ export class UsersController {
     } catch (error) {}
   }
 
-  @Get(':id')
-  async getUser(@Param('id') id: string) {
+  @Get(":id")
+  async getUser(@Param("id") id: string) {
     try {
       return this.userService.getUser(id);
     } catch (error) {
@@ -46,18 +46,18 @@ export class UsersController {
     }
   }
 
-  @Patch(':id')
+  @Patch(":id")
   async updateUser(
-    @Param('id') id: string,
-    @Body() updatedUser: Partial<CreateUserDto>,
+    @Param("id") id: string,
+    @Body() updatedUser: Partial<CreateUserDto>
   ) {
     try {
       return await this.userService.updateUser(id, updatedUser);
     } catch (error) {}
   }
 
-  @Delete(':id')
-  async deleteUser(@Param('id') id: string) {
+  @Delete(":id")
+  async deleteUser(@Param("id") id: string) {
     try {
       this.userService.deleteUser(id);
     } catch (error) {}

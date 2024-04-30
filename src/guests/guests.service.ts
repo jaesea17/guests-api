@@ -26,14 +26,11 @@ export class GuestsService {
     pageSize: number = 20,
     searchQuery?: string
   ): Promise<{ guests: Guests[]; total: number }> {
-    console.log("in getGuests....29");
     const offset = (page - 1) * pageSize;
     let whereCondition: any = {};
-    console.log("in getGuests....32");
     if (searchQuery) {
       whereCondition = { name: Like(`%${searchQuery.toUpperCase().trim()}%`) };
     }
-    console.log("in getGuests....36");
     const [guests, total] = await this.guestsRepository.findAndCount({
       where: whereCondition,
       skip: offset,
@@ -42,7 +39,6 @@ export class GuestsService {
         name: "ASC", // or 'DESC' for descending order
       },
     });
-    console.log("in getGuests....45");
     return { guests, total };
   }
 
@@ -80,8 +76,6 @@ export class GuestsService {
   async deleteGuest(guestId: string): Promise<void> {
     try {
       const result = await this.guestsRepository.delete(guestId);
-
-      // Check if the product was found and deleted successfully
       if (result.affected === 0) {
         throw new NotFoundException(`User with ID ${guestId} not found`);
       }

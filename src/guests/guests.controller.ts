@@ -35,7 +35,6 @@ export class GuestsController {
     @Query() query: { page: number; pageSize: number; search: string }
   ) {
     try {
-      console.log("ran in get controller in prod")
       const { page, pageSize, search } = query;
       return await this.guestService.getGuests(page, pageSize, search);
     } catch (error) {}
@@ -61,9 +60,11 @@ export class GuestsController {
     } catch (error) {}
   }
 
+  @Public()
   @Delete(":id")
   async deleteGuest(@Param("id") id: string) {
     try {
+      const res = await this.guestService.deleteGuest(id);
     } catch (error) {}
   }
 
