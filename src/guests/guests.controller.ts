@@ -68,11 +68,11 @@ export class GuestsController {
     } catch (error) {}
   }
 
-  @Public()
   @Delete()
   async deleteGuests() {
     try {
-      const res = await this.guestService.deleteGuests();
+      console.log("ran in the delete");
+      // const res = await this.guestService.deleteGuests();
     } catch (error) {}
   }
 }
