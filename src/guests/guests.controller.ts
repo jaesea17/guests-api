@@ -56,7 +56,7 @@ export class GuestsController {
     @Body() updatedGuest: Partial<CreateGuestDto>
   ) {
     try {
-      const res = await this.guestService.updateGuest(id, updatedGuest);
+      return await this.guestService.updateGuest(id, updatedGuest);
     } catch (error) {}
   }
 
