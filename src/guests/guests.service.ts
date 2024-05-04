@@ -33,7 +33,6 @@ export class GuestsService {
       whereCondition = { name: Like(`%${searchQuery.toUpperCase().trim()}%`) };
       [guests, total] = await this.guestsRepository.findAndCount({
         where: whereCondition,
-        skip: offset,
         take: pageSize,
         order: {
           name: "ASC", // or 'DESC' for descending order
