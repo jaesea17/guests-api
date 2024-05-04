@@ -28,17 +28,26 @@ export class GuestsService {
   ): Promise<{ guests: Guests[]; total: number }> {
     const offset = (page - 1) * pageSize;
     let whereCondition: any = {};
+    let guests: any, total: number;
     if (searchQuery) {
       whereCondition = { name: Like(`%${searchQuery.toUpperCase().trim()}%`) };
+      [guests, total] = await this.guestsRepository.findAndCount({
+        where: whereCondition,
+        skip: offset,
+        take: pageSize,
+        order: {
+          name: "ASC", // or 'DESC' for descending order
+        },
+      });
+    } else {
+      [guests, total] = await this.guestsRepository.findAndCount({
+        skip: offset,
+        take: pageSize,
+        order: {
+          name: "ASC", // or 'DESC' for descending order
+        },
+      });
     }
-    const [guests, total] = await this.guestsRepository.findAndCount({
-      where: whereCondition,
-      skip: offset,
-      take: pageSize,
-      order: {
-        name: "ASC", // or 'DESC' for descending order
-      },
-    });
     return { guests, total };
   }
 
