@@ -5,18 +5,6 @@ This app keeps records of invited guests to a wedding/ceremony.
 <br />
 <br />
 
-
-# Table of Contents
-
-- [Getting Started](#Getting-Started "Goto Getting-Started")
-- [Technology Stack](#Technology-Stack "Goto Technology-Stack")
-- [Installation](#Installation "Goto Installation")
-- [Features](#Features "Goto Features")
-- [Usage](#Usage "Goto Usage")
-- [Testing](#Testing "Goto Testing")
-- [Questions](#Questions "Goto Questions")
-- [Support or Contributions](#Support-or-Contributions "Support-or-Contributions")
-
 ## Technology Stack
 
 NodeJS, NestJS
