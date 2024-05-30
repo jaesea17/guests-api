@@ -1,3 +1,44 @@
+# GUESTS
+
+This is the API that serves the guest management/authentication system "guest".
+This app keeps records of invited guests to a wedding/ceremony.
+<br />
+<br />
+
+
+# Table of Contents
+
+- [Getting Started](#Getting-Started "Goto Getting-Started")
+- [Technology Stack](#Technology-Stack "Goto Technology-Stack")
+- [Installation](#Installation "Goto Installation")
+- [Features](#Features "Goto Features")
+- [Usage](#Usage "Goto Usage")
+- [Testing](#Testing "Goto Testing")
+- [Questions](#Questions "Goto Questions")
+- [Support or Contributions](#Support-or-Contributions "Support-or-Contributions")
+
+## Technology Stack
+
+NodeJS, NestJS
+
+## Installation
+
+1. Install Node JS on your machine.
+
+2. Clone the repository [here](https://github.com/jaesea17/SendIt_api).
+
+3. Change directory into the root of the project directory.
+
+4. Run `npm install` on the terminal to install project dependecies.
+
+5. Start the application: Different Build Environments.
+
+## Questions
+
+For more details contact  `oforkajajoseph@gmail.com`
+
+
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
